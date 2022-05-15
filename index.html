@@ -1,0 +1,38 @@
+<!DOCTYPE html >
+<html>
+<head>
+<title>qr code page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="qrcode.js"></script>
+</head>
+<body>
+<div id="qrcode" style="width:100px; height:100px; margin-top:15px; padding-top: 10%; padding-left: 40%;"></div>
+
+<script type="text/javascript">
+const username = ["user Name=user1 psw: user1", "user Name=user2 psw: user2","user Name=user3 psw: user3","user Name=user4 psw: user4" ,"user Name=user5 psw: user5" ,"user Name=user6 psw: user6" ];
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 100,
+	height : 100
+});
+var x = getRndInteger(0, 5)
+qrcode.makeCode(username[x]);
+
+makeCode();
+
+$("#text").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+
+</script>
+</body>
